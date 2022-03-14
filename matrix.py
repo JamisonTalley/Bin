@@ -1,9 +1,17 @@
 #Jamison Talley
+#Cutter 
+#Chandler
+#Aaron
 #3-9-22
 #matrix.py
 
+#imports necesary modules
 import stdio
 
+#defines a function that uses a list of lists to hold matrices
+#that are inputed by the user using the standard input module
+#the function doesn't take an input, and outputs a list of 
+#two matrices defined by the user
 def get_matrices():
     matrix = []
     matrices = [[],[]]
@@ -26,6 +34,9 @@ def get_matrices():
         matrix = []
     return matrices
 
+#takes one matrix as input, and returns a rectangular
+#version of that matrix by filling any spaces left 
+#by the user with 0's
 def matrix_cleanup(matrix):
     matrix_out = matrix
     row_lengths = []
@@ -39,6 +50,10 @@ def matrix_cleanup(matrix):
             matrix_out[i3].append(0)
     return matrix_out
 
+#takes two matrices as input and checks to see if
+#they can be multiplied by checking if the number of 
+#columns in the first matrix equals the nuber of 
+#rows in the second matrix
 def multiply_check(matrix_1, matrix_2):
     n_1 = len(matrix_1[0])
     m_2 = len(matrix_2)
@@ -47,6 +62,9 @@ def multiply_check(matrix_1, matrix_2):
     else:
         return False
 
+#defines a function that mutliplies two inputed matrices
+#together using the rules of matrix mutliplication,
+#and returns the matrix that is their product
 def multiply_matrices(matrix_1, matrix_2):
     m = len(matrix_1)
     n = len(matrix_2[0])
@@ -63,6 +81,8 @@ def multiply_matrices(matrix_1, matrix_2):
             matrix_val = 0
     return matrix_out
 
+#defines a function that displays the matrices in a neat manner
+#using the standard output module
 def display_matrix(matrix):
     m = len(matrix)
     n = len(matrix[0])
@@ -70,10 +90,11 @@ def display_matrix(matrix):
         stdio.write("\n")
         for i2 in range(n):
             stdio.writef("%2.0f", matrix[i1][i2])
-            stdio.write(" ")
+            stdio.write("  ")
     stdio.writeln("\n")
 
-
+#defines the test function that uses all of the above
+#functions when called
 def main():
     matrices = get_matrices()
     matrices = [matrix_cleanup(matrices[0]), matrix_cleanup(matrices[1])]
@@ -83,8 +104,11 @@ def main():
     else:
         stdio.writeln("Those matrices cannot be multiplied.")
 
-main()
+#runs the test function if the program is the file being ran
+if __name__ == "__main__":
+    main()
 
+#our prompt was:
 #2.1.18
 #Compose a function multiply() that takes two square matrices 
 #of the same dimension as arguments and returns their product 
